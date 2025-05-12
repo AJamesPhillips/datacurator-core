@@ -1,5 +1,5 @@
 import type { Base } from "../../shared/interfaces/base"
-import type { TemporalUncertainty, PredictionBase } from "../../shared/uncertainty/interfaces"
+import type { PredictionBase, TemporalUncertainty } from "../../shared/uncertainty/interfaces"
 import type { ValuePossibilitiesById } from "./possibility"
 import type { WComponentCalculations, WComponentNodeBase } from "./wcomponent_base"
 
@@ -55,7 +55,7 @@ const _wcomponent_statev2_subtypes: {[P in WComponentStateV2SubType]: true} = {
     // datetime: true,
     other: true,
 }
-export const wcomponent_statev2_subtypes: WComponentStateV2SubType[] = Object.keys(_wcomponent_statev2_subtypes) as any
+export const wcomponent_statev2_subtypes = Object.keys(_wcomponent_statev2_subtypes) as WComponentStateV2SubType[]
 
 
 // Choosing not to name this `WComponentNodeStateValue` as whether it is represented

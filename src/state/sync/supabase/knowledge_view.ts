@@ -1,14 +1,14 @@
 import type { PostgrestError, SupabaseClient } from "@supabase/supabase-js"
 
 import type { KnowledgeView } from "../../../shared/interfaces/knowledge_view"
-import { parse_knowledge_view } from "../../../wcomponent/parse_json/parse_knowledge_view"
+import { is_defined } from "../../../shared/utils/is_defined"
 import type { SupabaseReadKnowledgeView, SupabaseWriteKnowledgeView } from "../../../supabase/interfaces"
+import { WComponent, wcomponent_is_not_deleted } from "../../../wcomponent/interfaces/SpecialisedObjects"
+import { parse_knowledge_view } from "../../../wcomponent/parse_json/parse_knowledge_view"
 import { supabase_create_item } from "./create_items"
 import { supabase_get_items } from "./get_items"
 import type { UpsertItemReturn } from "./interface"
 import { app_item_to_supabase, supabase_item_to_app } from "./item_convertion"
-import { wcomponent_is_not_deleted, WComponent } from "../../../wcomponent/interfaces/SpecialisedObjects"
-import { is_defined } from "../../../shared/utils/is_defined"
 
 
 
@@ -72,7 +72,10 @@ export async function supabase_get_knowledge_views_from_other_bases (args: GetKn
 
 interface SupabaseUpsertKnowledgeViewArgs
 {
-    supabase: SupabaseClient
+    // We do not yet use the type `SupabaseClient<Database>` because it is not
+    // yet working correctly.  For example it incorrectly restricts the
+    // KnowledgeView type from being used for a json field type.
+    supabase: SupabaseClient//<Database>
     knowledge_view: KnowledgeView
 }
 type SupabaseUpsertKnowledgeViewReturn = Promise<UpsertItemReturn<KnowledgeView>>
@@ -100,7 +103,7 @@ async function supabase_update_knowledge_view (args: SupabaseUpsertKnowledgeView
 {
     const item = knowledge_view_app_to_supabase(args.knowledge_view)
 
-    const result = await args.supabase.rpc("update_knowledge_view", { item })
+    const result = await args.supabase.rpc<"update_knowledge_view", SupabaseReadKnowledgeView>("update_knowledge_view", { item })
     if (result.status === 401)
     {
         return { status: result.status, error: { message: "JWT expired" }, item: undefined }
@@ -111,7 +114,11 @@ async function supabase_update_knowledge_view (args: SupabaseUpsertKnowledgeView
     let error: PostgrestError | Error | undefined = result.error || undefined
     try
     {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         let new_supabase_item: SupabaseReadKnowledgeView = result.data as any
+        // When the status code is 409 then `result.error!.details` is an
+        // instance of `SupabaseReadKnowledgeView`
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         if (result.status === 409) new_supabase_item = JSON.parse(result.error!.details)
         new_item = knowledge_view_supabase_to_app(new_supabase_item)
     }

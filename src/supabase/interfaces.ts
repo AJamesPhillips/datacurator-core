@@ -88,7 +88,9 @@ export interface SupabaseReadItem<I> extends SupabaseWriteItem<I>
 }
 
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SupabaseWriteKnowledgeView extends SupabaseWriteItem<KnowledgeView> {}
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SupabaseReadKnowledgeView extends SupabaseReadItem<KnowledgeView> {}
 
 export interface SupabaseWriteWComponent extends SupabaseWriteItem<WComponent> {

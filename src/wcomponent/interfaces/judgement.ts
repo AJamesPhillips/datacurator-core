@@ -36,7 +36,7 @@ const _judgement_operators: {[P in JudgementOperator]: true} = {
     ">": true,
     ">=": true,
 }
-export const judgement_operators: JudgementOperator[] = Object.keys(_judgement_operators) as any
+export const judgement_operators = Object.keys(_judgement_operators) as JudgementOperator[]
 
 
 
@@ -49,7 +49,7 @@ const _judgement_trends: {[P in JudgementTrend]: true} = {
     "unknown": true,
     "not_assessed": true,
 }
-export const judgement_trends: JudgementTrend[] = Object.keys(_judgement_trends) as any
+export const judgement_trends = Object.keys(_judgement_trends) as JudgementTrend[]
 
 
 

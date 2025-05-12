@@ -1,4 +1,4 @@
-import { Model, SimulationError } from "simulation"
+import { Model, SimulationComponent, SimulationError } from "simulation"
 import { CalculationResult } from "./interfaces"
 
 
@@ -11,7 +11,7 @@ export function run_model (model: Model, initial_units: string | undefined, mode
 
     try {
         const calculation_result = model.simulate()
-        value = calculation_result!._data.data[0]![model_component!._node.id]
+        value = calculation_result._data.data[0]![model_component._node.id]
     }
     catch (e) {
         const err = e as SimulationError

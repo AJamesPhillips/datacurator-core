@@ -1,9 +1,9 @@
-import {
-    curly_bracket_content_regex,
-    non_square_bracket_ids_regex,
-    square_bracket_ids_regex,
-} from "../sharedf/rich_text/id_regexs"
-import { SIMULATION_JS_RESERVED_WORDS } from "./reserved_words"
+// import {
+//     curly_bracket_content_regex,
+//     non_square_bracket_ids_regex,
+//     square_bracket_ids_regex,
+// } from "../sharedf/rich_text/id_regexs"
+// import { SIMULATION_JS_RESERVED_WORDS } from "./reserved_words"
 
 
 
@@ -56,6 +56,7 @@ function convert_double_at_sign_uuidv4s_into_square_brackets (uuid_v4s: string[]
 }
 
 
+/*
 function hide_all_square_bracket_ids (converted_equation: string)
 {
 
@@ -162,3 +163,4 @@ function unhide_all_hidden_ids (hidden_ids: string[], converted_equation: string
 
     return converted_equation
 }
+*/

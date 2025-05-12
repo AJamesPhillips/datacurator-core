@@ -1,6 +1,6 @@
+import type { ParsedValue } from "../../wcomponent_derived/interfaces/value"
 import type { StateValueAndPrediction as VAP } from "../interfaces/state"
 import { VAPsType } from "../interfaces/VAPsType"
-import type { ParsedValue } from "../../wcomponent_derived/interfaces/value"
 
 
 
@@ -79,7 +79,7 @@ function parse_string_as_number (num_str: string): number | null
     // Allow empty strings to be return null instead of NaN.  NaN is resereved for invalid numbers
     if (num_str === "") return null
 
-    const matches = num_str.match(/^(-?[0-9]*\.?[0-9]*)\s*(?:(e)\s*(-?[0-9]+))?\s*(\%)?$/)
+    const matches = num_str.match(/^(-?[0-9]*\.?[0-9]*)\s*(?:(e)\s*(-?[0-9]+))?\s*(%)?$/)
     let value = NaN
     do
     {
@@ -90,6 +90,7 @@ function parse_string_as_number (num_str: string): number | null
         if (Number.isNaN(value)) break
         if (exponent_sign && exponent) value = value * 10 ** parseInt(exponent)
         if (percentage) value = value / 100
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     } while (false)
 
     return value

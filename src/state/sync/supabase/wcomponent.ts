@@ -1,15 +1,14 @@
 import type { PostgrestError, SupabaseClient } from "@supabase/supabase-js"
 
+import type { KnowledgeView } from "../../../shared/interfaces/knowledge_view"
+import { get_double_at_mentioned_uuids_from_text, is_valid_uuid } from "../../../sharedf/rich_text/id_regexs"
+import type { SupabaseReadWComponent, SupabaseWriteWComponent } from "../../../supabase/interfaces"
 import { WComponent, wcomponent_is_action, wcomponent_is_state_value } from "../../../wcomponent/interfaces/SpecialisedObjects"
 import { parse_wcomponent } from "../../../wcomponent/parse_json/parse_wcomponent"
-import type { SupabaseReadWComponent, SupabaseWriteWComponent } from "../../../supabase/interfaces"
 import { supabase_create_item } from "./create_items"
 import { supabase_get_items } from "./get_items"
 import type { UpsertItemReturn } from "./interface"
 import { app_item_to_supabase, supabase_item_to_app } from "./item_convertion"
-import type { KnowledgeView } from "../../../shared/interfaces/knowledge_view"
-import { get_double_at_mentioned_uuids_from_text } from "../../../sharedf/rich_text/id_regexs"
-import { is_valid_uuid } from "../../../sharedf/rich_text/id_regexs"
 
 
 
@@ -160,7 +159,10 @@ async function supabase_update_wcomponent (args: SupabaseUpsertWComponentArgs): 
     let error: PostgrestError | Error | undefined = result.error || undefined
     try
     {
-        let new_supabase_item: SupabaseReadWComponent = result.data as any
+        let new_supabase_item = result.data as SupabaseReadWComponent
+        // When the status code is 409 then `result.error!.details` is an
+        // instance of `SupabaseReadWComponent`
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         if (result.status === 409) new_supabase_item = JSON.parse(result.error!.details)
         new_item = wcomponent_supabase_to_app(new_supabase_item)
     }

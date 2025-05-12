@@ -3,15 +3,17 @@
 
 interface Options
 {
-    comparison_function?: (a: {key: string, value: any}, b: {key: string, value: any}) => number
+    comparison_function?: (a: {key: string, value: unknown}, b: {key: string, value: unknown}) => number
     space?: string | number
     cycles?: boolean
-    replacer?: () => {}
+    replacer?: () => string
     sort_items?: boolean
     render_undefined?: boolean
 }
 
-export function stable_stringify (obj: any, opts: Options = {})
+type NodeType = {[index: string]: unknown}
+
+export function stable_stringify (obj: unknown, opts: Options = {})
 {
     const sort_items = opts.sort_items ?? false
     const render_undefined = opts.render_undefined ?? false
@@ -19,14 +21,14 @@ export function stable_stringify (obj: any, opts: Options = {})
 
     const cycles = typeof opts.cycles === "boolean" ? opts.cycles : false
 
-    const replacer = opts.replacer || ((key: string | number, value: any) =>
+    const replacer = opts.replacer || ((key: string | number, value: unknown) =>
     {
         return is_date(value) ? value.toISOString() : (
             value instanceof Set ? Array.from(value).sort() : value
         )
     })
 
-    const comparison_function_factory = opts.comparison_function && function (node: any)
+    const comparison_function_factory = opts.comparison_function && function (node: NodeType)
     {
         return function (a: string, b: string)
         {
@@ -38,8 +40,8 @@ export function stable_stringify (obj: any, opts: Options = {})
     }
 
 
-    const seen: string[] = []
-    return (function stringify(parent: any, key: string | number, node: any, level: number): string | undefined
+    const seen: object[] = []
+    return (function stringify(parent: unknown, key: string | number, node: unknown, level: number): string | undefined
     {
         const indent = space ? "\n" + new Array(level + 1).join(space) : ""
         const colon_separator = space ? ": " : ":"
@@ -86,12 +88,12 @@ export function stable_stringify (obj: any, opts: Options = {})
         let keys = Object.keys(node)
         if (sort_items)
         {
-            keys = keys.sort(comparison_function_factory && comparison_function_factory(node))
+            keys = keys.sort(comparison_function_factory && comparison_function_factory(node as NodeType))
         }
         const out: string[] = []
         keys.forEach(key =>
         {
-            const value = stringify(node, key, node[key], level + 1)
+            const value = stringify(node, key, (node as NodeType)[key], level + 1)
 
             if (!value)
             {
@@ -113,7 +115,7 @@ export function stable_stringify (obj: any, opts: Options = {})
 
 
 
-function is_date (value: any): value is Date
+function is_date (value: unknown): value is Date
 {
     return Object.prototype.toString.call(value) === "[object Date]"
 }

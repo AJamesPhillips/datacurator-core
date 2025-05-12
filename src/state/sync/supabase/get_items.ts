@@ -34,11 +34,12 @@ export async function supabase_get_items <S extends { id: string, base_id: numbe
     // if (args.specific_ids) console .log("args.specific_ids....", args.specific_ids.length, offset)
 
     let query = args.supabase
-        .from<string, any>(args.table)
-        .select("*")
+        .from<string, S>(args.table)
+        .select<string, S>()
         .order("id", { ascending: true })
 
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     if (args.base_id !== undefined) query = query.eq("base_id", args.base_id as any)
 
 
@@ -50,13 +51,14 @@ export async function supabase_get_items <S extends { id: string, base_id: numbe
     {
         const specific_ids = args.specific_ids.slice(offset, offset_max_inclusive + 1)
         // console .log("specific_ids", offset, offset_max_inclusive + 1, specific_ids.slice(0, 3))
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         query = query.in("id", specific_ids as any)
     }
 
 
     const res1 = await query
     let error = res1.error || undefined
-    let items = (res1.data || []).map(args.converter)
+    let items = (res1.data || []).map(v => args.converter(v))
 
     // You may have a knowledge view with one or more ids you can not access, however
     // there will be other ids you can access so keep going until they have all been

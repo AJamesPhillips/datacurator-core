@@ -6,6 +6,8 @@ import { Tense } from "../../wcomponent/interfaces/datetime"
 
 export function get_tense_of_uncertain_datetime (item: HasUncertainDatetime, sim_ms: number): Tense
 {
+    // TODO: document why item.datetime might be undefined and or update types / data in DB
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     const { min, value, max } = (item.datetime || {})
 
     const [have_min, min_ms] = min === undefined ? [false, 0] : [true, min.getTime()]

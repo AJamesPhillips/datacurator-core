@@ -1,15 +1,15 @@
 // import { YAMLParseError } from "yaml"
-import { ReplaceNormalIdsInTextArgs } from "../sharedf/rich_text/interfaces"
 import { NumberDisplayType } from "../shared/types"
+import { ReplaceNormalIdsInTextArgs } from "../sharedf/rich_text/interfaces"
 
 
 
-interface ValidPlainCalculationObject
-{
-    valid: true
-    value: number | string  // strings might be an @@<uuid v4>
-    name?: string
-}
+// interface ValidPlainCalculationObject
+// {
+//     valid: true
+//     value: number | string  // strings might be an @@<uuid v4>
+//     name?: string
+// }
 
 // interface InvalidCalculationObject
 // {
