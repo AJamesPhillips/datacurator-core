@@ -31,7 +31,8 @@ export default tseslint.config(
             "@typescript-eslint/no-explicit-any": "off",
             "@typescript-eslint/no-base-to-string": "off",
             "@typescript-eslint/no-misused-promises": "off",
-            "no-constant-condition": "off"
+            "no-constant-condition": "off",
+            "prefer-const": "off",
         },
     },
 )
