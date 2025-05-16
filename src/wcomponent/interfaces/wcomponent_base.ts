@@ -1,7 +1,7 @@
 // Copied from: https://github.com/AJamesPhillips/DataCurator/blob/main/app/frontend/src/wcomponent/interfaces/wcomponent_base.ts
 
 import { PlainCalculationObject } from "../../calculations/interfaces"
-import { Base } from "../../shared/interfaces/base"
+import { Base } from "../../interfaces/base"
 import { ValidityPredictions } from "../../shared/uncertainty/validity"
 import { HasVAPSetsAndMaybeValuePossibilities } from "./state"
 

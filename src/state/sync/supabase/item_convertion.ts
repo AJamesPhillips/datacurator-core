@@ -1,4 +1,4 @@
-import type { Base } from "../../../shared/interfaces/base"
+import type { Base } from "../../../interfaces/base"
 import type { SupabaseReadItem, SupabaseWriteItem } from "../../../supabase/interfaces"
 import { clean_base_object_of_sync_meta_fields } from "./clean_base_object_for_supabase"
 

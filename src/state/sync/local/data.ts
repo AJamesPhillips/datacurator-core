@@ -1,6 +1,6 @@
 import type { User } from "@supabase/supabase-js"
 
-import { KnowledgeViewsById } from "../../../shared/interfaces/knowledge_view"
+import { KnowledgeViewsById } from "../../../interfaces/knowledge_view"
 import type { SpecialisedObjectsFromToServer, WComponentsById } from "../../../wcomponent/interfaces/SpecialisedObjects"
 import { parse_knowledge_view } from "../../../wcomponent/parse_json/parse_knowledge_view"
 import { parse_wcomponent } from "../../../wcomponent/parse_json/parse_wcomponent"

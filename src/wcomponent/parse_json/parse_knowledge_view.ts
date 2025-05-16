@@ -1,4 +1,4 @@
-import type { KnowledgeView, KnowledgeViewWComponentEntry, KnowledgeViewWComponentIdEntryMap } from "../../shared/interfaces/knowledge_view"
+import type { KnowledgeView, KnowledgeViewWComponentEntry, KnowledgeViewWComponentIdEntryMap } from "../../interfaces/knowledge_view"
 import {
     clean_base_object_of_sync_meta_fields,
 } from "../../state/sync/supabase/clean_base_object_for_supabase"

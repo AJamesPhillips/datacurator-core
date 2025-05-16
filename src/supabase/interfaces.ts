@@ -1,4 +1,6 @@
-import type { KnowledgeView } from "../shared/interfaces/knowledge_view"
+// TODO: aim to use this less and replace with ./types/database.types.ts
+
+import type { KnowledgeView } from "../interfaces/knowledge_view"
 import type { WComponent } from "../wcomponent/interfaces/SpecialisedObjects"
 import type { WComponentType } from "../wcomponent/interfaces/wcomponent_base"
 

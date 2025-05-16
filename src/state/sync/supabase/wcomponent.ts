@@ -1,6 +1,6 @@
 import type { PostgrestError, SupabaseClient } from "@supabase/supabase-js"
 
-import type { KnowledgeView } from "../../../shared/interfaces/knowledge_view"
+import type { KnowledgeView } from "../../../interfaces/knowledge_view"
 import { get_double_at_mentioned_uuids_from_text, is_valid_uuid } from "../../../sharedf/rich_text/id_regexs"
 import type { SupabaseReadWComponent, SupabaseWriteWComponent } from "../../../supabase/interfaces"
 import { WComponent, wcomponent_is_action, wcomponent_is_state_value } from "../../../wcomponent/interfaces/SpecialisedObjects"

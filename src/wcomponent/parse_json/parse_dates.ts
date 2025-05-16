@@ -1,4 +1,4 @@
-import type { Base } from "../../shared/interfaces/base"
+import type { Base } from "../../interfaces/base"
 import type { HasUncertainDatetime, TemporalUncertainty } from "../../shared/uncertainty/interfaces"
 
 

@@ -1,6 +1,6 @@
 import type { WComponentNodeAction } from "./action"
-// import type { Base } from "../../shared/interfaces/base"
-import type { KnowledgeView } from "../../shared/interfaces/knowledge_view"
+// import type { Base } from "../../interfaces/base"
+import type { KnowledgeView } from "../../interfaces/knowledge_view"
 import type { ValidityPredictions } from "../../shared/uncertainty/validity"
 import type { WComponentCounterfactualV2 } from "./counterfactual"
 import type { EventAt, WComponentNodeEvent } from "./event"

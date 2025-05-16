@@ -1,4 +1,4 @@
-import type { Base } from "../../shared/interfaces/base"
+import type { Base } from "../../interfaces/base"
 import type { PredictionBase, TemporalUncertainty } from "../../shared/uncertainty/interfaces"
 import type { ValuePossibilitiesById } from "./possibility"
 import type { WComponentCalculations, WComponentNodeBase } from "./wcomponent_base"

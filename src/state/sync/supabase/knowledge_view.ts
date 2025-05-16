@@ -1,6 +1,6 @@
 import type { PostgrestError, SupabaseClient } from "@supabase/supabase-js"
 
-import type { KnowledgeView } from "../../../shared/interfaces/knowledge_view"
+import type { KnowledgeView } from "../../../interfaces/knowledge_view"
 import { is_defined } from "../../../shared/utils/is_defined"
 import type { SupabaseReadKnowledgeView, SupabaseWriteKnowledgeView } from "../../../supabase/interfaces"
 import { WComponent, wcomponent_is_not_deleted } from "../../../wcomponent/interfaces/SpecialisedObjects"

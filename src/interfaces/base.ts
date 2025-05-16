@@ -1,5 +1,3 @@
-// Copied from: https://github.com/AJamesPhillips/DataCurator/blob/main/app/frontend/src/shared/interfaces/base.ts
-
 import type { Color } from "./color"
 
 

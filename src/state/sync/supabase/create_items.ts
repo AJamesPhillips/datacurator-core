@@ -1,6 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js"
 
-import type { Base } from "../../../shared/interfaces/base"
+import type { Base } from "../../../interfaces/base"
 import type { UpsertItemReturn } from "./interface"
 
 

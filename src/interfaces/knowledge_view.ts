@@ -1,4 +1,4 @@
-import type { Project } from "../../wcomponent/interfaces/project"
+import type { Project } from "../wcomponent/interfaces/project"
 import type { Base } from "./base"
 import type { Color } from "./color"
 import type { DatetimeLineConfig } from "./datetime_lines"

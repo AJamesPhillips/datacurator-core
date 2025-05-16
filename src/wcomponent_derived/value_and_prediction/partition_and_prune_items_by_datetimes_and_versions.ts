@@ -1,6 +1,6 @@
 // import { describe, test } from "../../shared/utils/test"
 
-import type { Base } from "../../shared/interfaces/base"
+import type { Base } from "../../interfaces/base"
 import type { HasUncertainDatetime } from "../../shared/uncertainty/interfaces"
 import {
     partition_and_sort_by_uncertain_event_datetimes,
