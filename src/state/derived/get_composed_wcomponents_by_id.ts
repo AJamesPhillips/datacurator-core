@@ -1,9 +1,9 @@
 import { KnowledgeViewWComponentIdEntryMap } from "../../interfaces/knowledge_view"
-import { sort_list, SortDirection } from "../../shared/utils/sort"
+import { get_created_at_ms } from "../../shared/datetime/accessor"
 import {
-    get_created_at_ms,
     partition_items_by_created_at_datetime,
-} from "../../shared/utils_datetime/utils_datetime"
+} from "../../shared/datetime/partition_by_created_at"
+import { sort_list, SortDirection } from "../../utils/sort"
 import {
     WComponent,
     wcomponent_is_state_value,

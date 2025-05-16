@@ -2,7 +2,7 @@
 // TODO: implement some way to run all tests (also add some more tests :-))
 // Perhaps explore using https://github.com/kvendrik/jest-lite to run the tests
 
-import { test_partition_items_by_created_at_datetime } from "./shared/utils_datetime/utils_datetime.test";
+import { test_partition_items_by_created_at_datetime } from "./shared/datetime/partition_by_created_at.test";
 import { test_get_ids_from_text, test_id_regexs } from "./sharedf/rich_text/id_regexs.test";
 
 

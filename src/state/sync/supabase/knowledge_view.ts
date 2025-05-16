@@ -1,8 +1,8 @@
 import type { PostgrestError, SupabaseClient } from "@supabase/supabase-js"
 
 import type { KnowledgeView } from "../../../interfaces/knowledge_view"
-import { is_defined } from "../../../shared/utils/is_defined"
 import type { SupabaseReadKnowledgeView, SupabaseWriteKnowledgeView } from "../../../supabase/interfaces"
+import { is_defined } from "../../../utils/is_defined"
 import { WComponent, wcomponent_is_not_deleted } from "../../../wcomponent/interfaces/SpecialisedObjects"
 import { parse_knowledge_view } from "../../../wcomponent/parse_json/parse_knowledge_view"
 import { supabase_create_item } from "./create_items"

@@ -1,5 +1,5 @@
 // import { YAMLParseError } from "yaml"
-import { NumberDisplayType } from "../shared/types"
+import { NumberDisplayType } from "../interfaces/types"
 import { ReplaceNormalIdsInTextArgs } from "../sharedf/rich_text/interfaces"
 
 

@@ -1,4 +1,4 @@
-import { str_enum } from "./utils/str_enum"
+import { str_enum } from "../utils/str_enum"
 
 
 

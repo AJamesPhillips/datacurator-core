@@ -1,4 +1,4 @@
-import { describe, test } from "../../shared/utils/test"
+import { describe, test } from "../../utils/test"
 import { uuid_v4_for_tests } from "../../utils/uuid_v4_for_tests"
 import {
     get_double_at_mentioned_uuids_from_text,
