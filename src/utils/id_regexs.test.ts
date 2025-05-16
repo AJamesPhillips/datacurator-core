@@ -1,5 +1,3 @@
-import { describe, test } from "../../utils/test"
-import { uuid_v4_for_tests } from "../../utils/uuid_v4_for_tests"
 import {
     get_double_at_mentioned_uuids_from_text,
     get_uuids_from_text,
@@ -7,6 +5,8 @@ import {
     uuids_regex,
     uuids_regexes,
 } from "./id_regexs"
+import { describe, test } from "./test"
+import { uuid_v4_for_tests } from "./uuid_v4_for_tests"
 
 
 export const test_id_regexs = describe.delay("id_regexs", () =>

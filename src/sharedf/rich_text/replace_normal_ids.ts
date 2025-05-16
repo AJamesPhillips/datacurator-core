@@ -1,4 +1,4 @@
-import { get_double_at_mentioned_uuids_from_text } from "./id_regexs"
+import { get_double_at_mentioned_uuids_from_text } from "../../utils/id_regexs"
 import type { ReplaceNormalIdsInTextArgs } from "./interfaces"
 import { format_wcomponent_id_error, format_wcomponent_link } from "./templates"
 
