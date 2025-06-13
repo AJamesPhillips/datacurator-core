@@ -1,8 +1,7 @@
 // import { DateTime } from "luxon"
-import { TimeResolution } from "../interfaces/datetime"
 import { uncertain_datetime_is_eternal } from "../shared/uncertainty/datetime"
 import type { TemporalUncertainty } from "../shared/uncertainty/interfaces"
-import { date2str_auto } from "./date_helpers"
+import { date2str_auto, TimeResolution } from "./date_helpers"
 
 
 
@@ -22,19 +21,19 @@ export function valid_date_str (date_str: string)
 interface DateToStringArgs
 {
     date: Date | undefined
-    time_resolution: TimeResolution
+    time_resolution?: TimeResolution
     trim_midnight?: boolean
 }
 export function date_to_string (args: DateToStringArgs)
 {
-    const { date, time_resolution, trim_midnight } = args
-    const as_string = (date && valid_date(date)) ? date2str_auto({ date, time_resolution, trim_midnight }) : ""
+    const { date } = args
+    const as_string = (date && valid_date(date)) ? date2str_auto({ ...args, date }) : ""
     return as_string
 }
 
 
 
-export function uncertain_date_to_string (datetime: TemporalUncertainty, time_resolution: TimeResolution)
+export function uncertain_date_to_string (datetime: TemporalUncertainty, time_resolution?: TimeResolution)
 {
     let str = "Eternal"
 

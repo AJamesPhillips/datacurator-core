@@ -1,4 +1,3 @@
-import { TimeResolution } from "..//interfaces/datetime"
 
 
 
@@ -268,6 +267,7 @@ export function date2str (date: Date, format: string)
 
 
 
+export type TimeResolution = "second" | "minute" | "hour" | "day"
 interface Date2strAutoArgs
 {
     date: Date
@@ -276,7 +276,7 @@ interface Date2strAutoArgs
     trim_midnight?: boolean
 }
 
-export function date2str_auto (args: Date2strAutoArgs)
+export function date2str_auto (args: Date2strAutoArgs): string
 {
     const { date, time_resolution = "minute", trim_midnight = true } = args
 

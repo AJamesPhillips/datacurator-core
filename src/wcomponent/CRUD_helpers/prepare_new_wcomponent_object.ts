@@ -1,10 +1,8 @@
 import type { HasBaseId } from "../../interfaces/base"
-import { date2str_auto } from "../../utils/date_helpers"
 import { get_new_id } from "../../utils/ids"
 import type { WComponentNodeAction } from "../interfaces/action"
 import type { WComponentNodeGoal } from "../interfaces/goal"
 import type { WComponentJudgement } from "../interfaces/judgement"
-import type { WComponentPrioritisation } from "../interfaces/priorities"
 import { WComponent, WComponentConnection, WComponentNode, wcomponent_is_causal_link } from "../interfaces/SpecialisedObjects"
 import type { WComponentNodeStateV2 } from "../interfaces/state"
 import type { WComponentBase } from "../interfaces/wcomponent_base"
@@ -77,18 +75,6 @@ export function prepare_new_contextless_wcomponent_object (partial_wcomponent: P
             type: partial_wcomponent.type, // only added to remove type warning
         }
         wcomponent = statev2
-    }
-    else if (partial_wcomponent.type === "prioritisation")
-    {
-        const prioritisation: WComponentPrioritisation = {
-            ...base,
-            title: date2str_auto({ date: when, time_resolution: "day" }),
-            goals: {},
-            datetime: { value: when },
-            ...partial_wcomponent,
-            type: partial_wcomponent.type, // only added to remove type warning
-        }
-        wcomponent = prioritisation
     }
     else if (partial_wcomponent.type === "goal")
     {
